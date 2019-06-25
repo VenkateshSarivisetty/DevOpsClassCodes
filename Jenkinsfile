@@ -1,18 +1,20 @@
 pipeline {
-    agent any 
-	stages {
-	    stage ('Initialize') {
-		    steps {
-			    sh '''
-				echo "PATH = ${PATH}"
-				echo "M2_HOME = ${M2_HOME}"
-				'''
+    agent any
+
+    stages {
+        stage('Source') { //Get code
+            steps { //Get code from Git Repository
+		git 'https://github.com/VenkateshSarivisetty/DevOpsClassCodes.git'
+            }
+        }
+        stage('Compile') { //Compile and do the unit testing
+		 tools {
+		    maven 'Apache Maven 3.5.0'
 			}
-		}
-		stage ('Build') {
-		    steps {
-			    echo 'Hello World'
-			}
-		}
-	}	
+            steps { // run maven to execute compile and unit testing
+               bat 'mvn compile
+	       bat 'mvn test'
+            }
+        }
+    }
 }
