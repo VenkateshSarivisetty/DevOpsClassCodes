@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools { 
-        maven 'Maven 3.5.0' 
-        jdk 'jdk8' 
+        maven 'Maven 3.6.1' 
+        jdk 'jdk 1.8.0' 
     }
     stages {
         stage ('Initialize') {
             steps {
-                bat '''
+                sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 ''' 
@@ -16,7 +16,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                echo 'This is a minimal pipeline.'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
     }
