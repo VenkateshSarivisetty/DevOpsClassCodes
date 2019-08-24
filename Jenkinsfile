@@ -1,10 +1,12 @@
 pipeline {
-    agent any
+	agent any{
+		dockerfile true
+	}
 	tools{
 	   maven 'My Maven'
            jdk 'MyJava'
 	}
-    stages {
+	stages {
 	    stage ('Initilize') {
 		    steps {
 			sh '''
