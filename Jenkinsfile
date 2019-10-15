@@ -3,8 +3,8 @@ pipeline {
 	    dockerfile true
 	}
 	tools{
-	   maven 'My Maven'
-           jdk 'MyJava'
+	   maven 'maven'
+           jdk 'java8'
 	}
 	stages {
 	    stage ('Initilize') {
